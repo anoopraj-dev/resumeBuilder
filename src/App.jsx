@@ -11,6 +11,7 @@ function App() {
     <>
       <div>
         <h2>Jithu</h2>
+        <input type="text" />
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
