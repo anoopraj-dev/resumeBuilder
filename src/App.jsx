@@ -1,36 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Component from './Component'
+import { useUser } from '@clerk/clerk-react'
+import React from 'react'
+import { Navigate, Outlet } from 'react-router-dom'
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const {user,isLoaded,isSignedIn} =useUser();
 
+  if(!isSignedIn && isLoaded){
+    return <Navigate to={'/signin'}/>
+  }
   return (
-    <>
-      <div>
-        <h2>Jithu</h2>
-
-        <input type="text" />
-
-        <h1>hellow world</h1>
-
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-
-      <h1>hello hello</h1>
-
-     
-      
-    </>
+    <div> 
+     <Outlet/>
+    </div>
   )
 }
 
 export default App
+
